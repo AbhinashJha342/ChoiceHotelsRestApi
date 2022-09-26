@@ -16,13 +16,4 @@ public class SoapConfig {
         marshaller.setContextPath("org.choicehotels.springrest.client.gen");
         return marshaller;
     }
-
-    @Bean
-    public ChoiceHotelSoapClient countryClient(Jaxb2Marshaller marshaller) {
-        ChoiceHotelSoapClient client = new ChoiceHotelSoapClient();
-        client.setDefaultUri("http://localhost:8088/hotels");
-        client.setMarshaller(marshaller);
-        client.setUnmarshaller(marshaller);
-        return client;
-    }
 }
