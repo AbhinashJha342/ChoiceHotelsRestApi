@@ -35,8 +35,8 @@ public class HotelController {
 
     }
 
-    @GetMapping(params = "hotelId")
-    public ResponseEntity<HotelDetailsResponseDto> getHotelDetails(@RequestParam(name = "hotelId", required = true) String hotelId) {
+    @GetMapping("/{hotelId}")
+    public ResponseEntity<HotelDetailsResponseDto> getHotelDetails(@PathVariable String hotelId) {
         HotelDetailsResponseDto getHotelDetailsResponseDto = hotelService.getHotelDetails(hotelId);
         return ObjectUtils.isEmpty(getHotelDetailsResponseDto)
                 ? new ResponseEntity<>(HttpStatus.NOT_FOUND)
@@ -70,4 +70,9 @@ public class HotelController {
             return new ResponseEntity<>(hotelService.getHotelDetailsByName(hotelName), HttpStatus.FOUND);
     }
 
+    @DeleteMapping("/{hotelId}")
+    public ResponseEntity deleteHotel(@PathVariable String hotelId) {
+        hotelService.archive(hotelId);
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }

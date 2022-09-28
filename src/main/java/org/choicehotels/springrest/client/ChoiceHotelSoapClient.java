@@ -1,55 +1,57 @@
 package org.choicehotels.springrest.client;
 
 import org.choicehotels.springrest.client.gen.*;
-import org.choicehotels.springrest.model.AmenitiesResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.ws.client.core.WebServiceTemplate;
-
-import java.net.ConnectException;
 
 @Service
 public class ChoiceHotelSoapClient {
 
-    @Autowired
-    private Jaxb2Marshaller marshaller;
+    private final Jaxb2Marshaller marshaller;
 
     private WebServiceTemplate template;
 
-    public CreateHotelResponse createHotel(CreateHotelRequest createHotelRequest){
+    @Autowired
+    public ChoiceHotelSoapClient(Jaxb2Marshaller marshaller) {
+        this.marshaller = marshaller;
         template = new WebServiceTemplate(marshaller);
+    }
+
+    public CreateHotelResponse createHotel(CreateHotelRequest createHotelRequest){
         CreateHotelResponse hotelResponse;
         hotelResponse = (CreateHotelResponse) template.marshalSendAndReceive("http://localhost:8088/wsdlfirst/hotels.wsdl", createHotelRequest);
         return hotelResponse;
     }
 
     public GetHotelDetailsResponse getHotelDetails(GetHotelDetailsRequest getHotelDetailsRequest){
-        template = new WebServiceTemplate(marshaller);
         GetHotelDetailsResponse hotelResponse;
         hotelResponse = (GetHotelDetailsResponse) template.marshalSendAndReceive("http://localhost:8088/wsdlfirst/hotels.wsdl", getHotelDetailsRequest);
         return hotelResponse;
     }
 
     public CreateHotelAmenitiesResponse createHotelAmenities(CreateHotelAmenitiesRequest createHotelAmenitiesRequest){
-        template = new WebServiceTemplate(marshaller);
         CreateHotelAmenitiesResponse amenitiesResponseDto;
         amenitiesResponseDto = (CreateHotelAmenitiesResponse) template.marshalSendAndReceive("http://localhost:8088/wsdlfirst/hotels.wsdl", createHotelAmenitiesRequest);
         return amenitiesResponseDto;
     }
 
     public UpdateHotelAmenitiesResponse updateHotelAmenities(UpdateHotelAmenitiesRequest updateHotelAmenitiesRequest){
-        template = new WebServiceTemplate(marshaller);
         UpdateHotelAmenitiesResponse amenitiesResponseDto;
         amenitiesResponseDto = (UpdateHotelAmenitiesResponse) template.marshalSendAndReceive("http://localhost:8088/wsdlfirst/hotels.wsdl", updateHotelAmenitiesRequest);
         return amenitiesResponseDto;
     }
 
     public GetHotelByNameResponse getHotelDetailsByName(GetHotelByNameRequest getHotelByNameRequest){
-        template = new WebServiceTemplate(marshaller);
         GetHotelByNameResponse hotelByNameResponse;
         hotelByNameResponse = (GetHotelByNameResponse) template.marshalSendAndReceive("http://localhost:8088/wsdlfirst/hotels.wsdl", getHotelByNameRequest);
         return hotelByNameResponse;
+    }
+
+    public DeleteHotelResponse archive(DeleteHotelRequest deleteHotelRequest) {
+        DeleteHotelResponse deleteHotelResponse;
+        deleteHotelResponse = (DeleteHotelResponse) template.marshalSendAndReceive("http://localhost:8088/wsdlfirst/hotels.wsdl", deleteHotelRequest);
+        return deleteHotelResponse;
     }
 }

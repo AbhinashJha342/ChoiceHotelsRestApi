@@ -21,4 +21,6 @@ public interface BasicHotelService {
     UpdatedAmenitiesResponseDto updatedAmenities(UpdateHotelAmenitiesRequest amenitiesRequest);
 
     List<HotelDetailsResponseDto> getHotelDetailsByName(String hotelId);
+
+    void archive(String hotelId);
 }

@@ -57,4 +57,11 @@ public class HotelServiceImpl implements BasicHotelService {
         GetHotelByNameResponse hotelByNameResponse = soapClient.getHotelDetailsByName(hotelByNameRequest);
         return hotelByNameResponse.getHotelDetails().stream().map(hotelsByNameResponse -> new HotelDetailsByNameMapperImpl().map(hotelsByNameResponse)).collect(Collectors.toList());
     }
+
+    @Override
+    public void archive(String hotelId) {
+        DeleteHotelRequest deleteHotelRequest = new DeleteHotelRequest();
+        deleteHotelRequest.setHotelId(hotelId);
+        soapClient.archive(deleteHotelRequest);
+    }
 }
