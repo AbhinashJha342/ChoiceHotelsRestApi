@@ -12,6 +12,7 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/hotel")
@@ -36,7 +37,7 @@ public class HotelController {
 
     @GetMapping(params = "hotelId")
     public ResponseEntity<HotelDetailsResponseDto> getHotelDetails(@RequestParam(name = "hotelId", required = true) String hotelId) {
-        HotelDetailsResponseDto getHotelDetailsResponseDto = hotelService.getHotelDetailsResponseDto(hotelId);
+        HotelDetailsResponseDto getHotelDetailsResponseDto = hotelService.getHotelDetails(hotelId);
         return ObjectUtils.isEmpty(getHotelDetailsResponseDto)
                 ? new ResponseEntity<>(HttpStatus.NOT_FOUND)
                 : new ResponseEntity<>(getHotelDetailsResponseDto, HttpStatus.FOUND);
@@ -63,4 +64,10 @@ public class HotelController {
                 ? new ResponseEntity<>(HttpStatus.CONFLICT)
                 : new ResponseEntity<>(updatedAmenities, HttpStatus.CREATED);
     }
+
+    @GetMapping(params = "name")
+    public ResponseEntity<List<HotelDetailsResponseDto>> getHotelDetailsByName(@RequestParam(name = "name", required = false) String hotelName){
+            return new ResponseEntity<>(hotelService.getHotelDetailsByName(hotelName), HttpStatus.FOUND);
+    }
+
 }

@@ -45,4 +45,11 @@ public class ChoiceHotelSoapClient {
         amenitiesResponseDto = (UpdateHotelAmenitiesResponse) template.marshalSendAndReceive("http://localhost:8088/wsdlfirst/hotels.wsdl", updateHotelAmenitiesRequest);
         return amenitiesResponseDto;
     }
+
+    public GetHotelByNameResponse getHotelDetailsByName(GetHotelByNameRequest getHotelByNameRequest){
+        template = new WebServiceTemplate(marshaller);
+        GetHotelByNameResponse hotelByNameResponse;
+        hotelByNameResponse = (GetHotelByNameResponse) template.marshalSendAndReceive("http://localhost:8088/wsdlfirst/hotels.wsdl", getHotelByNameRequest);
+        return hotelByNameResponse;
+    }
 }

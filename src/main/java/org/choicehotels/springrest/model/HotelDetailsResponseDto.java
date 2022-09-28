@@ -1,11 +1,8 @@
 package org.choicehotels.springrest.model;
 
-import org.choicehotels.springrest.client.gen.AddressDto;
-
 import java.util.List;
 
 public class HotelDetailsResponseDto {
-
 
     private String hotelId;
 

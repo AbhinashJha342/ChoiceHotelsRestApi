@@ -8,13 +8,17 @@ import org.choicehotels.springrest.model.CreateHotelResponseDto;
 import org.choicehotels.springrest.model.HotelDetailsResponseDto;
 import org.choicehotels.springrest.model.UpdatedAmenitiesResponseDto;
 
+import java.util.List;
+
 public interface BasicHotelService {
 
     CreateHotelResponseDto createHotel(CreateHotelRequest createHotelRequest);
 
-    HotelDetailsResponseDto getHotelDetailsResponseDto(String hotelId);
+    HotelDetailsResponseDto getHotelDetails(String hotelId);
 
     AmenitiesResponseDto createHotelAmenities(CreateHotelAmenitiesRequest createHotelAmenitiesRequest);
 
     UpdatedAmenitiesResponseDto updatedAmenities(UpdateHotelAmenitiesRequest amenitiesRequest);
+
+    List<HotelDetailsResponseDto> getHotelDetailsByName(String hotelId);
 }
