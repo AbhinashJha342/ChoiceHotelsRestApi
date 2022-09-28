@@ -7,6 +7,8 @@ import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Service;
 import org.springframework.ws.client.core.WebServiceTemplate;
 
+import java.net.ConnectException;
+
 @Service
 public class ChoiceHotelSoapClient {
 
@@ -17,7 +19,8 @@ public class ChoiceHotelSoapClient {
 
     public CreateHotelResponse createHotel(CreateHotelRequest createHotelRequest){
         template = new WebServiceTemplate(marshaller);
-        CreateHotelResponse hotelResponse = (CreateHotelResponse) template.marshalSendAndReceive("http://localhost:8088/wsdlfirst/hotels.wsdl", createHotelRequest);
-        return  hotelResponse;
+        CreateHotelResponse hotelResponse = new CreateHotelResponse();
+        hotelResponse = (CreateHotelResponse) template.marshalSendAndReceive("http://localhost:8088/wsdlfirst/hotels.wsdl", createHotelRequest);
+        return hotelResponse;
     }
 }
