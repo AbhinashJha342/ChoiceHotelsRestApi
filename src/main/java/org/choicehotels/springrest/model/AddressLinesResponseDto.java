@@ -39,7 +39,7 @@ public class AddressLinesResponseDto {
             return this;
         }
 
-        public AddressLinesResponseDto builder() {
+        public AddressLinesResponseDto build() {
             return new AddressLinesResponseDto(this.exterior, this.street);
         }
     }
