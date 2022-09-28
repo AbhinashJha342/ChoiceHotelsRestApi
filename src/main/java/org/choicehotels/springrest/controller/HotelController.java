@@ -2,10 +2,8 @@ package org.choicehotels.springrest.controller;
 
 import org.choicehotels.springrest.client.gen.CreateHotelAmenitiesRequest;
 import org.choicehotels.springrest.client.gen.CreateHotelRequest;
-import org.choicehotels.springrest.model.AmenitiesRequestDto;
-import org.choicehotels.springrest.model.AmenitiesResponseDto;
-import org.choicehotels.springrest.model.CreateHotelResponseDto;
-import org.choicehotels.springrest.model.HotelDetailsResponseDto;
+import org.choicehotels.springrest.client.gen.UpdateHotelAmenitiesRequest;
+import org.choicehotels.springrest.model.*;
 import org.choicehotels.springrest.service.BasicHotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -46,7 +44,6 @@ public class HotelController {
 
     @PostMapping("/{hotelId}/amenities")
     public ResponseEntity<AmenitiesResponseDto> createHotelAmenities(@Valid @PathVariable String hotelId, @RequestBody AmenitiesRequestDto amenitiesRequestDto) {
-        System.out.println(amenitiesRequestDto);
         CreateHotelAmenitiesRequest amenitiesRequest = new CreateHotelAmenitiesRequest();
         amenitiesRequest.setHotelId(hotelId);
         amenitiesRequest.getAmenities().addAll(amenitiesRequestDto.getAmenities());
@@ -54,5 +51,16 @@ public class HotelController {
         return ObjectUtils.isEmpty(amenitiesResponseDto)
                 ? new ResponseEntity<>(HttpStatus.CONFLICT)
                 : new ResponseEntity<>(amenitiesResponseDto, HttpStatus.CREATED);
+    }
+
+    @PatchMapping("/{hotelId}/amenities")
+    public ResponseEntity<UpdatedAmenitiesResponseDto> updateHotelAmenities(@Valid @PathVariable String hotelId, @RequestBody UpdatedAmenitiesRequestDto amenitiesRequestDto) {
+        UpdateHotelAmenitiesRequest amenitiesRequest = new UpdateHotelAmenitiesRequest();
+        amenitiesRequest.setHotelId(hotelId);
+        amenitiesRequest.getAmenities().addAll(amenitiesRequestDto.getAmenities());
+        UpdatedAmenitiesResponseDto updatedAmenities = hotelService.updatedAmenities(amenitiesRequest);
+        return ObjectUtils.isEmpty(updatedAmenities)
+                ? new ResponseEntity<>(HttpStatus.CONFLICT)
+                : new ResponseEntity<>(updatedAmenities, HttpStatus.CREATED);
     }
 }
