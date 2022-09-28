@@ -1,6 +1,9 @@
 package org.choicehotels.springrest.controller;
 
+import org.choicehotels.springrest.client.gen.CreateHotelAmenitiesRequest;
 import org.choicehotels.springrest.client.gen.CreateHotelRequest;
+import org.choicehotels.springrest.model.AmenitiesRequestDto;
+import org.choicehotels.springrest.model.AmenitiesResponseDto;
 import org.choicehotels.springrest.model.CreateHotelResponseDto;
 import org.choicehotels.springrest.model.HotelDetailsResponseDto;
 import org.choicehotels.springrest.service.BasicHotelService;
@@ -39,5 +42,17 @@ public class HotelController {
         return ObjectUtils.isEmpty(getHotelDetailsResponseDto)
                 ? new ResponseEntity<>(HttpStatus.NOT_FOUND)
                 : new ResponseEntity<>(getHotelDetailsResponseDto, HttpStatus.FOUND);
+    }
+
+    @PostMapping("/{hotelId}/amenities")
+    public ResponseEntity<AmenitiesResponseDto> createHotelAmenities(@Valid @PathVariable String hotelId, @RequestBody AmenitiesRequestDto amenitiesRequestDto) {
+        System.out.println(amenitiesRequestDto);
+        CreateHotelAmenitiesRequest amenitiesRequest = new CreateHotelAmenitiesRequest();
+        amenitiesRequest.setHotelId(hotelId);
+        amenitiesRequest.getAmenities().addAll(amenitiesRequestDto.getAmenities());
+        AmenitiesResponseDto amenitiesResponseDto = hotelService.createHotelAmenities(amenitiesRequest);
+        return ObjectUtils.isEmpty(amenitiesResponseDto)
+                ? new ResponseEntity<>(HttpStatus.CONFLICT)
+                : new ResponseEntity<>(amenitiesResponseDto, HttpStatus.CREATED);
     }
 }

@@ -18,6 +18,7 @@ public class RestResponseExceptionHandler extends ResponseEntityExceptionHandler
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        System.out.println("inside response entity");
         ErrorData error = new ErrorData(HttpStatus.BAD_REQUEST);
         error.setMessage(Collections.singletonMap("errors", ex.getAllErrors().stream().map(ObjectError::toString).collect(Collectors.toList())).toString());
         return new ResponseEntity<>(error, error.getStatus());

@@ -1,9 +1,7 @@
 package org.choicehotels.springrest.client;
 
-import org.choicehotels.springrest.client.gen.CreateHotelRequest;
-import org.choicehotels.springrest.client.gen.CreateHotelResponse;
-import org.choicehotels.springrest.client.gen.GetHotelDetailsRequest;
-import org.choicehotels.springrest.client.gen.GetHotelDetailsResponse;
+import org.choicehotels.springrest.client.gen.*;
+import org.choicehotels.springrest.model.AmenitiesResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Service;
@@ -22,7 +20,6 @@ public class ChoiceHotelSoapClient {
 
     public CreateHotelResponse createHotel(CreateHotelRequest createHotelRequest){
         template = new WebServiceTemplate(marshaller);
-        new CreateHotelResponse();
         CreateHotelResponse hotelResponse;
         hotelResponse = (CreateHotelResponse) template.marshalSendAndReceive("http://localhost:8088/wsdlfirst/hotels.wsdl", createHotelRequest);
         return hotelResponse;
@@ -30,10 +27,15 @@ public class ChoiceHotelSoapClient {
 
     public GetHotelDetailsResponse getHotelDetails(GetHotelDetailsRequest getHotelDetailsRequest){
         template = new WebServiceTemplate(marshaller);
-        new GetHotelDetailsResponse();
         GetHotelDetailsResponse hotelResponse;
         hotelResponse = (GetHotelDetailsResponse) template.marshalSendAndReceive("http://localhost:8088/wsdlfirst/hotels.wsdl", getHotelDetailsRequest);
-        System.out.println("after client is called");
         return hotelResponse;
+    }
+
+    public CreateHotelAmenitiesResponse createHotelAmenities(CreateHotelAmenitiesRequest createHotelAmenitiesRequest){
+        template = new WebServiceTemplate(marshaller);
+        CreateHotelAmenitiesResponse amenitiesResponseDto;
+        amenitiesResponseDto = (CreateHotelAmenitiesResponse) template.marshalSendAndReceive("http://localhost:8088/wsdlfirst/hotels.wsdl", createHotelAmenitiesRequest);
+        return amenitiesResponseDto;
     }
 }
