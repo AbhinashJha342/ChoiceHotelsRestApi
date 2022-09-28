@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="hotelId" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "hotelId"
+    "name"
 })
-@XmlRootElement(name = "getHotelDetailsRequest")
-public class GetHotelDetailsRequest {
+@XmlRootElement(name = "getHotelByNameRequest")
+public class GetHotelByNameRequest {
 
     @XmlElement(required = true)
-    protected String hotelId;
+    protected String name;
 
     /**
-     * Gets the value of the hotelId property.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getHotelId() {
-        return hotelId;
+    public String getName() {
+        return name;
     }
 
     /**
-     * Sets the value of the hotelId property.
+     * Sets the value of the name property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setHotelId(String value) {
-        this.hotelId = value;
+    public void setName(String value) {
+        this.name = value;
     }
 
 }

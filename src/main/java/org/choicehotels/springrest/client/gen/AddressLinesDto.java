@@ -11,21 +11,21 @@ package org.choicehotels.springrest.client.gen;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Java class for addressLinesDto complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType&gt;
+ * &lt;complexType name="addressLinesDto"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="hotelId" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="exterior" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="street" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -35,37 +35,63 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "hotelId"
+@XmlType(name = "addressLinesDto", propOrder = {
+    "exterior",
+    "street"
 })
-@XmlRootElement(name = "getHotelDetailsRequest")
-public class GetHotelDetailsRequest {
+public class AddressLinesDto {
 
     @XmlElement(required = true)
-    protected String hotelId;
+    protected String exterior;
+    @XmlElement(required = true)
+    protected String street;
 
     /**
-     * Gets the value of the hotelId property.
+     * Gets the value of the exterior property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getHotelId() {
-        return hotelId;
+    public String getExterior() {
+        return exterior;
     }
 
     /**
-     * Sets the value of the hotelId property.
+     * Sets the value of the exterior property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setHotelId(String value) {
-        this.hotelId = value;
+    public void setExterior(String value) {
+        this.exterior = value;
+    }
+
+    /**
+     * Gets the value of the street property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getStreet() {
+        return street;
+    }
+
+    /**
+     * Sets the value of the street property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setStreet(String value) {
+        this.street = value;
     }
 
 }

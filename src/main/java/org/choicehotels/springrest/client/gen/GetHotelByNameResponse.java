@@ -8,6 +8,8 @@
 
 package org.choicehotels.springrest.client.gen;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -25,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="hotelId" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="hotelDetails" type="{http://localhost:8088/hotels}hotelsByNameResponse" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +38,41 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "hotelId"
+    "hotelDetails"
 })
-@XmlRootElement(name = "getHotelDetailsRequest")
-public class GetHotelDetailsRequest {
+@XmlRootElement(name = "getHotelByNameResponse")
+public class GetHotelByNameResponse {
 
     @XmlElement(required = true)
-    protected String hotelId;
+    protected List<HotelsByNameResponse> hotelDetails;
 
     /**
-     * Gets the value of the hotelId property.
+     * Gets the value of the hotelDetails property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getHotelId() {
-        return hotelId;
-    }
-
-    /**
-     * Sets the value of the hotelId property.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the hotelDetails property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getHotelDetails().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link HotelsByNameResponse }
+     * 
+     * 
      */
-    public void setHotelId(String value) {
-        this.hotelId = value;
+    public List<HotelsByNameResponse> getHotelDetails() {
+        if (hotelDetails == null) {
+            hotelDetails = new ArrayList<HotelsByNameResponse>();
+        }
+        return this.hotelDetails;
     }
 
 }

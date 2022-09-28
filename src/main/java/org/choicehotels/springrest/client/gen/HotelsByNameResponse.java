@@ -8,27 +8,30 @@
 
 package org.choicehotels.springrest.client.gen;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlList;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Java class for hotelsByNameResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType&gt;
+ * &lt;complexType name="hotelsByNameResponse"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="hotelId" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="rating" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="rating" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="address" type="{http://localhost:8088/hotels}addressDto"/&gt;
+ *         &lt;element name="amenities" type="{http://localhost:8088/hotels}amenitiesList"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -38,22 +41,26 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
+@XmlType(name = "hotelsByNameResponse", propOrder = {
     "hotelId",
     "name",
     "rating",
-    "address"
+    "address",
+    "amenities"
 })
-@XmlRootElement(name = "createHotelResponse")
-public class CreateHotelResponse {
+public class HotelsByNameResponse {
 
     @XmlElement(required = true)
     protected String hotelId;
     @XmlElement(required = true)
     protected String name;
+    @XmlElement(required = true)
     protected String rating;
     @XmlElement(required = true)
     protected AddressDto address;
+    @XmlList
+    @XmlElement(required = true)
+    protected List<String> amenities;
 
     /**
      * Gets the value of the hotelId property.
@@ -149,6 +156,35 @@ public class CreateHotelResponse {
      */
     public void setAddress(AddressDto value) {
         this.address = value;
+    }
+
+    /**
+     * Gets the value of the amenities property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the amenities property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getAmenities().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
+     * 
+     * 
+     */
+    public List<String> getAmenities() {
+        if (amenities == null) {
+            amenities = new ArrayList<String>();
+        }
+        return this.amenities;
     }
 
 }

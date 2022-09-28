@@ -38,8 +38,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "hotelId"
 })
-@XmlRootElement(name = "getHotelDetailsRequest")
-public class GetHotelDetailsRequest {
+@XmlRootElement(name = "deleteHotelRequest")
+public class DeleteHotelRequest {
 
     @XmlElement(required = true)
     protected String hotelId;
