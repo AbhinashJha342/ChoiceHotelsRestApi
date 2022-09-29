@@ -21,7 +21,6 @@ public class HotelController {
 
     private final BasicHotelService hotelService;
 
-    @Autowired
     public HotelController(BasicHotelService hotelService) {
         this.hotelService = hotelService;
     }
@@ -36,11 +35,19 @@ public class HotelController {
     }
 
     @GetMapping("/{hotelId}")
-    public ResponseEntity<HotelDetailsResponseDto> getHotelDetails(@PathVariable String hotelId) {
+    public ResponseEntity<HotelDetailsResponseDto> getHotelDetails(@PathVariable(required = false) String hotelId) {
         HotelDetailsResponseDto getHotelDetailsResponseDto = hotelService.getHotelDetails(hotelId);
         return ObjectUtils.isEmpty(getHotelDetailsResponseDto)
                 ? new ResponseEntity<>(HttpStatus.NOT_FOUND)
                 : new ResponseEntity<>(getHotelDetailsResponseDto, HttpStatus.FOUND);
+    }
+
+    @PatchMapping("/{hotelId}")
+    public ResponseEntity<HotelUpdateDetailsResponseDto> updateHotelDetails(@RequestBody HotelUpdateDetailsRequestDto hotelUpdateDetailsRequestDto, @PathVariable String hotelId){
+        HotelUpdateDetailsResponseDto hotelUpdateDetailsResponseDto = hotelService.updateHotelDetails(hotelUpdateDetailsRequestDto, hotelId);
+        return ObjectUtils.isEmpty(hotelUpdateDetailsResponseDto)
+                ? new ResponseEntity<>(HttpStatus.CONFLICT)
+                : new ResponseEntity<>(hotelUpdateDetailsResponseDto, HttpStatus.FOUND);
     }
 
     @PostMapping("/{hotelId}/amenities")

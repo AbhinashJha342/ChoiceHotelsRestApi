@@ -3,10 +3,7 @@ package org.choicehotels.springrest.service;
 import org.choicehotels.springrest.client.gen.CreateHotelAmenitiesRequest;
 import org.choicehotels.springrest.client.gen.CreateHotelRequest;
 import org.choicehotels.springrest.client.gen.UpdateHotelAmenitiesRequest;
-import org.choicehotels.springrest.model.AmenitiesResponseDto;
-import org.choicehotels.springrest.model.CreateHotelResponseDto;
-import org.choicehotels.springrest.model.HotelDetailsResponseDto;
-import org.choicehotels.springrest.model.UpdatedAmenitiesResponseDto;
+import org.choicehotels.springrest.model.*;
 
 import java.util.List;
 
@@ -17,6 +14,8 @@ public interface BasicHotelService {
     HotelDetailsResponseDto getHotelDetails(String hotelId);
 
     AmenitiesResponseDto createHotelAmenities(CreateHotelAmenitiesRequest createHotelAmenitiesRequest);
+
+    HotelUpdateDetailsResponseDto updateHotelDetails(HotelUpdateDetailsRequestDto hotelUpdateDetailsRequestDto, String hotelId);
 
     UpdatedAmenitiesResponseDto updatedAmenities(UpdateHotelAmenitiesRequest amenitiesRequest);
 

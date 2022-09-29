@@ -3,10 +3,7 @@ package org.choicehotels.springrest.service.impl;
 import org.choicehotels.springrest.client.ChoiceHotelSoapClient;
 import org.choicehotels.springrest.client.gen.*;
 import org.choicehotels.springrest.mapper.impl.*;
-import org.choicehotels.springrest.model.AmenitiesResponseDto;
-import org.choicehotels.springrest.model.CreateHotelResponseDto;
-import org.choicehotels.springrest.model.HotelDetailsResponseDto;
-import org.choicehotels.springrest.model.UpdatedAmenitiesResponseDto;
+import org.choicehotels.springrest.model.*;
 import org.choicehotels.springrest.service.BasicHotelService;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +39,13 @@ public class HotelServiceImpl implements BasicHotelService {
     public AmenitiesResponseDto createHotelAmenities(CreateHotelAmenitiesRequest createHotelAmenitiesRequest) {
         CreateHotelAmenitiesResponse amenitiesResponseDto = soapClient.createHotelAmenities(createHotelAmenitiesRequest);
         return new AmenitiesResponseMapperImpl().map(amenitiesResponseDto);
+    }
+
+    @Override
+    public HotelUpdateDetailsResponseDto updateHotelDetails(HotelUpdateDetailsRequestDto hotelUpdateDetailsRequestDto, String hotelId) {
+        UpdateHotelRequest updateHotelRequest = new HotelDetailsUpdateMapperImpl().map(hotelUpdateDetailsRequestDto);
+        updateHotelRequest.setHotelId(hotelId);
+        return new HotelDetailsUpdateResponseMapperImpl().map(soapClient.updateHotelDetails(updateHotelRequest));
     }
 
     @Override

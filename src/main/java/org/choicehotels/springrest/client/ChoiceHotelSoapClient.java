@@ -1,6 +1,7 @@
 package org.choicehotels.springrest.client;
 
 import org.choicehotels.springrest.client.gen.*;
+import org.choicehotels.springrest.model.HotelUpdateDetailsResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,6 @@ public class ChoiceHotelSoapClient {
 
     private WebServiceTemplate template;
 
-    @Autowired
     public ChoiceHotelSoapClient(Jaxb2Marshaller marshaller) {
         this.marshaller = marshaller;
         template = new WebServiceTemplate(marshaller);
@@ -29,6 +29,12 @@ public class ChoiceHotelSoapClient {
         GetHotelDetailsResponse hotelResponse;
         hotelResponse = (GetHotelDetailsResponse) template.marshalSendAndReceive("http://localhost:8088/wsdlfirst/hotels.wsdl", getHotelDetailsRequest);
         return hotelResponse;
+    }
+
+    public UpdateHotelResponse updateHotelDetails(UpdateHotelRequest updateHotelRequest){
+        UpdateHotelResponse updateHotelResponse;
+        updateHotelResponse = (UpdateHotelResponse) template.marshalSendAndReceive("http://localhost:8088/wsdlfirst/hotels.wsdl", updateHotelRequest);
+        return updateHotelResponse;
     }
 
     public CreateHotelAmenitiesResponse createHotelAmenities(CreateHotelAmenitiesRequest createHotelAmenitiesRequest){
