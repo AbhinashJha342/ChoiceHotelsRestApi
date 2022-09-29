@@ -23,6 +23,28 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="updateHotelRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="hotelId" type="xs:string"/>
+                <xs:element minOccurs="0" name="name" type="tns:nonEmptyString"/>
+                <xs:element minOccurs="0" name="rating" type="xs:string"/>
+                <xs:element minOccurs="0" name="address" type="tns:addressDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateHotelResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="hotelId" type="xs:string"/>
+                <xs:element name="name" type="tns:nonEmptyString"/>
+                <xs:element name="rating" type="xs:string"/>
+                <xs:element name="address" type="tns:addressDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
     <xs:element name="getHotelDetailsRequest">
         <xs:complexType>
             <xs:sequence>
@@ -154,12 +176,8 @@
     <wsdl:part element="sch:getHotelByNameResponse" name="getHotelByNameResponse">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="createHotelRequest">
-    <wsdl:part element="sch:createHotelRequest" name="createHotelRequest">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="getHotelByNameRequest">
-    <wsdl:part element="sch:getHotelByNameRequest" name="getHotelByNameRequest">
+  <wsdl:message name="updateHotelRequest">
+    <wsdl:part element="sch:updateHotelRequest" name="updateHotelRequest">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="createHotelAmenitiesRequest">
@@ -174,6 +192,18 @@
     <wsdl:part element="sch:deleteHotelRequest" name="deleteHotelRequest">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="createHotelAmenitiesResponse">
+    <wsdl:part element="sch:createHotelAmenitiesResponse" name="createHotelAmenitiesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createHotelRequest">
+    <wsdl:part element="sch:createHotelRequest" name="createHotelRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getHotelByNameRequest">
+    <wsdl:part element="sch:getHotelByNameRequest" name="getHotelByNameRequest">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="deleteHotelResponse">
     <wsdl:part element="sch:deleteHotelResponse" name="deleteHotelResponse">
     </wsdl:part>
@@ -186,8 +216,8 @@
     <wsdl:part element="sch:createHotelResponse" name="createHotelResponse">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="createHotelAmenitiesResponse">
-    <wsdl:part element="sch:createHotelAmenitiesResponse" name="createHotelAmenitiesResponse">
+  <wsdl:message name="updateHotelResponse">
+    <wsdl:part element="sch:updateHotelResponse" name="updateHotelResponse">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getHotelDetailsRequest">
@@ -205,10 +235,10 @@
       <wsdl:output message="tns:getHotelByNameResponse" name="getHotelByNameResponse">
     </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="createHotel">
-      <wsdl:input message="tns:createHotelRequest" name="createHotelRequest">
+    <wsdl:operation name="updateHotel">
+      <wsdl:input message="tns:updateHotelRequest" name="updateHotelRequest">
     </wsdl:input>
-      <wsdl:output message="tns:createHotelResponse" name="createHotelResponse">
+      <wsdl:output message="tns:updateHotelResponse" name="updateHotelResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="createHotelAmenities">
@@ -229,6 +259,12 @@
       <wsdl:output message="tns:deleteHotelResponse" name="deleteHotelResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="createHotel">
+      <wsdl:input message="tns:createHotelRequest" name="createHotelRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:createHotelResponse" name="createHotelResponse">
+    </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getHotelDetails">
       <wsdl:input message="tns:getHotelDetailsRequest" name="getHotelDetailsRequest">
     </wsdl:input>
@@ -247,12 +283,12 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="createHotel">
+    <wsdl:operation name="updateHotel">
       <soap:operation soapAction=""/>
-      <wsdl:input name="createHotelRequest">
+      <wsdl:input name="updateHotelRequest">
         <soap:body use="literal"/>
       </wsdl:input>
-      <wsdl:output name="createHotelResponse">
+      <wsdl:output name="updateHotelResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
@@ -280,6 +316,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="deleteHotelResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createHotel">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="createHotelRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createHotelResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
