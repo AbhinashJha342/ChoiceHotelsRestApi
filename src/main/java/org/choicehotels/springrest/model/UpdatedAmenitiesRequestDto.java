@@ -5,18 +5,18 @@ import java.util.Optional;
 
 public class UpdatedAmenitiesRequestDto {
 
-    private Optional<List<String>> amenities;
-
+    private List<String> amenities;
 
     public List<String> getAmenities() {
-
-        return amenities.orElse(null);
+        return amenities;
     }
 
-    public UpdatedAmenitiesRequestDto(Optional<List<String>> amenities) {
+    public void setAmenities(List<String> amenities) {
         this.amenities = amenities;
     }
 
     public UpdatedAmenitiesRequestDto() {
     }
+
+
 }

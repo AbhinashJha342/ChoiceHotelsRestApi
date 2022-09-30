@@ -1,17 +1,16 @@
 package org.choicehotels.springrest.controller;
 
 import org.choicehotels.springrest.client.gen.CreateHotelAmenitiesRequest;
-import org.choicehotels.springrest.client.gen.CreateHotelRequest;
 import org.choicehotels.springrest.client.gen.UpdateHotelAmenitiesRequest;
 import org.choicehotels.springrest.model.*;
 import org.choicehotels.springrest.service.BasicHotelService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.net.BindException;
 import java.util.List;
 
 @RestController
@@ -26,12 +25,11 @@ public class HotelController {
     }
 
     @PostMapping
-    public ResponseEntity<CreateHotelResponseDto> createHotel(@Valid @RequestBody CreateHotelRequest hotelRequest) {
+    public ResponseEntity<CreateHotelResponseDto> createHotel(@Valid @RequestBody CreateHotelRequestDto hotelRequest) {
         CreateHotelResponseDto createHotelResponseDto = hotelService.createHotel(hotelRequest);
         return ObjectUtils.isEmpty(createHotelResponseDto.getHotelId())
                 ? new ResponseEntity<>(HttpStatus.CONFLICT)
                 : new ResponseEntity<>(createHotelResponseDto, HttpStatus.CREATED);
-
     }
 
     @GetMapping("/{hotelId}")

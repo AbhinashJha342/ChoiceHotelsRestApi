@@ -22,8 +22,8 @@ public class HotelServiceImpl implements BasicHotelService {
     }
 
     @Override
-    public CreateHotelResponseDto createHotel(CreateHotelRequest createHotelRequest) {
-        CreateHotelResponse createHotelResponse = soapClient.createHotel(createHotelRequest);
+    public CreateHotelResponseDto createHotel(CreateHotelRequestDto createHotelRequest) {
+        CreateHotelResponse createHotelResponse = soapClient.createHotel(new CreateHotelRequestMapperImpl().map(createHotelRequest));
         return new CreateHotelResponseMapperImpl().map(createHotelResponse);
     }
 

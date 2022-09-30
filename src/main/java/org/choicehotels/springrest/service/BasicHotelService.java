@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface BasicHotelService {
 
-    CreateHotelResponseDto createHotel(CreateHotelRequest createHotelRequest);
+    CreateHotelResponseDto createHotel(CreateHotelRequestDto createHotelRequest);
 
     HotelDetailsResponseDto getHotelDetails(String hotelId);
 

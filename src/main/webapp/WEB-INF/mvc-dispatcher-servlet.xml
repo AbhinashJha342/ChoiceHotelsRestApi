@@ -8,6 +8,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
     <!-- <mvc:annotation-driven/> -->
+    <!-- Enables the Spring MVC @Controller programming model -->
     <annotation-driven />
     <context:component-scan base-package="org.choicehotels.springrest.*" />
 

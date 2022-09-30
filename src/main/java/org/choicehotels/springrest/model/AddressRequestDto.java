@@ -10,7 +10,6 @@ public class AddressRequestDto {
 
     private AddressLinesRequestDto addressLines;
 
-
     public AddressRequestDto(String city, String state, String postalCode, AddressLinesRequestDto addressLines) {
         this.city = city;
         this.state = state;
