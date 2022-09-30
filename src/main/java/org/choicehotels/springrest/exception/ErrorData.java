@@ -1,9 +1,9 @@
 package org.choicehotels.springrest.exception;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class ErrorData {
 
@@ -11,11 +11,10 @@ public class ErrorData {
 
     private String message;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
-    private LocalDateTime timestamp;
+    private String timestamp;
 
     private ErrorData() {
-        timestamp = LocalDateTime.now();
+        timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss"));
     }
 
     ErrorData(HttpStatus status) {
@@ -39,11 +38,11 @@ public class ErrorData {
         this.message = message;
     }
 
-    public LocalDateTime getTimestamp() {
+    public String getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(LocalDateTime timestamp) {
+    public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
 }
