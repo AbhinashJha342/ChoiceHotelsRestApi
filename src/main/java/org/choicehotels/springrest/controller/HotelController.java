@@ -15,7 +15,7 @@ import java.util.List;
 import org.choicehotel.*;
 
 @RestController
-@RequestMapping("/hotel")
+@RequestMapping("/hotels")
 public class HotelController {
 
 
