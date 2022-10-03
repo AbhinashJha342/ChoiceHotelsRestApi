@@ -16,7 +16,6 @@ import java.util.List;
 @RequestMapping("/hotels")
 public class HotelController {
 
-
     private final BasicHotelService hotelService;
 
     public HotelController(BasicHotelService hotelService) {
