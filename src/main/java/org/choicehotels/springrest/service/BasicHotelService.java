@@ -1,8 +1,7 @@
 package org.choicehotels.springrest.service;
 
-import org.choicehotels.springrest.client.gen.CreateHotelAmenitiesRequest;
-import org.choicehotels.springrest.client.gen.CreateHotelRequest;
-import org.choicehotels.springrest.client.gen.UpdateHotelAmenitiesRequest;
+import org.choicehotel.generated.CreateHotelAmenitiesRequest;
+import org.choicehotel.generated.UpdateHotelAmenitiesRequest;
 import org.choicehotels.springrest.model.*;
 
 import java.util.List;

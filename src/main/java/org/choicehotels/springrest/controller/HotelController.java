@@ -1,7 +1,7 @@
 package org.choicehotels.springrest.controller;
 
-import org.choicehotels.springrest.client.gen.CreateHotelAmenitiesRequest;
-import org.choicehotels.springrest.client.gen.UpdateHotelAmenitiesRequest;
+import org.choicehotel.generated.CreateHotelAmenitiesRequest;
+import org.choicehotel.generated.UpdateHotelAmenitiesRequest;
 import org.choicehotels.springrest.model.*;
 import org.choicehotels.springrest.service.BasicHotelService;
 import org.springframework.http.HttpStatus;
@@ -10,8 +10,9 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.net.BindException;
 import java.util.List;
+
+import org.choicehotel.*;
 
 @RestController
 @RequestMapping("/hotel")

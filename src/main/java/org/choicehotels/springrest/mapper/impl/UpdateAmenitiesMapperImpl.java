@@ -1,6 +1,6 @@
 package org.choicehotels.springrest.mapper.impl;
 
-import org.choicehotels.springrest.client.gen.UpdateHotelAmenitiesResponse;
+import org.choicehotel.generated.UpdateHotelAmenitiesResponse;
 import org.choicehotels.springrest.mapper.Mapper;
 import org.choicehotels.springrest.model.UpdatedAmenitiesResponseDto;
 

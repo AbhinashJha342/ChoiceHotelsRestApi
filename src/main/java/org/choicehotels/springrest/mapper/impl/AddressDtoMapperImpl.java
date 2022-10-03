@@ -1,7 +1,7 @@
 package org.choicehotels.springrest.mapper.impl;
 
-import org.choicehotels.springrest.client.gen.AddressDto;
-import org.choicehotels.springrest.client.gen.AddressLinesDto;
+import org.choicehotel.generated.AddressDto;
+import org.choicehotel.generated.AddressLinesDto;
 import org.choicehotels.springrest.mapper.Mapper;
 import org.choicehotels.springrest.model.AddressRequestDto;
 

@@ -1,7 +1,6 @@
 package org.choicehotels.springrest.model;
 
 import java.util.List;
-import java.util.Optional;
 
 public class UpdatedAmenitiesRequestDto {
 

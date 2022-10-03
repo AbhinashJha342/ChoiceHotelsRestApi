@@ -1,8 +1,9 @@
-package org.choicehotels.springrest.model;
+package org.choicehotels.springrest.mapper.impl;
 
-import org.choicehotels.springrest.client.gen.UpdateHotelResponse;
+import org.choicehotel.generated.UpdateHotelResponse;
 import org.choicehotels.springrest.mapper.Mapper;
 import org.choicehotels.springrest.mapper.impl.AddressResponseMapperImpl;
+import org.choicehotels.springrest.model.HotelUpdateDetailsResponseDto;
 
 public class HotelDetailsUpdateResponseMapperImpl implements Mapper<UpdateHotelResponse, HotelUpdateDetailsResponseDto> {
 

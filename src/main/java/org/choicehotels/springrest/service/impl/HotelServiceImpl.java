@@ -1,7 +1,7 @@
 package org.choicehotels.springrest.service.impl;
 
+import org.choicehotel.generated.*;
 import org.choicehotels.springrest.client.ChoiceHotelSoapClient;
-import org.choicehotels.springrest.client.gen.*;
 import org.choicehotels.springrest.mapper.impl.*;
 import org.choicehotels.springrest.model.*;
 import org.choicehotels.springrest.service.BasicHotelService;

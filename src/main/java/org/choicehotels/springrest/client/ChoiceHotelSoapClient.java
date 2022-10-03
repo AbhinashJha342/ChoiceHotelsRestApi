@@ -1,6 +1,6 @@
 package org.choicehotels.springrest.client;
 
-import org.choicehotels.springrest.client.gen.*;
+import org.choicehotel.generated.*;
 import org.choicehotels.springrest.exception.GlobalExceptionResolver;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Service;
