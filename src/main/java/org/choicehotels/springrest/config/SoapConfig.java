@@ -11,7 +11,8 @@ public class SoapConfig {
     @Bean
     public Jaxb2Marshaller marshaller() {
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
-        marshaller.setContextPath("org.choicehotels.springrest.client.gen");
+        //after externalizing need to change the context path to the externalized project path.
+        marshaller.setContextPath("org.choicehotel.generated");
         return marshaller;
     }
 
