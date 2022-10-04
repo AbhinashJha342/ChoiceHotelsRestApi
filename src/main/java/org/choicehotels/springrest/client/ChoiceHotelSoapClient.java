@@ -2,6 +2,8 @@ package org.choicehotels.springrest.client;
 
 import org.choicehotel.generated.*;
 import org.choicehotels.springrest.exception.GlobalExceptionResolver;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Service;
 import org.springframework.ws.client.core.WebServiceTemplate;
@@ -15,6 +17,9 @@ public class ChoiceHotelSoapClient {
     private WebServiceTemplate template;
 
     private final GlobalExceptionResolver exceptionResolver;
+
+    @Autowired
+    private Environment environment;
 
     public ChoiceHotelSoapClient(Jaxb2Marshaller marshaller, GlobalExceptionResolver exceptionResolver) {
         this.marshaller = marshaller;
@@ -66,7 +71,7 @@ public class ChoiceHotelSoapClient {
 
     private Object handleSoapCall(Object object) {
        try{
-           return template.marshalSendAndReceive("http://localhost:8088/wsdlfirst/hotels.wsdl", object);
+           return template.marshalSendAndReceive(environment.getProperty("soap.wsdl.path"), object);
        } catch(SoapFaultClientException ex){
            throw exceptionResolver.parseSoapException(ex);
        }
