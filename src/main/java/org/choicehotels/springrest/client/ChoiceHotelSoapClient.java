@@ -4,7 +4,6 @@ import org.choicehotel.generated.*;
 import org.choicehotels.springrest.exception.GlobalExceptionResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Service;
 import org.springframework.ws.client.WebServiceIOException;
 import org.springframework.ws.client.core.WebServiceTemplate;
@@ -17,12 +16,12 @@ public class ChoiceHotelSoapClient {
 
     private final GlobalExceptionResolver exceptionResolver;
 
-    @Autowired
-    private Environment environment;
+    private final Environment environment;
 
-    public ChoiceHotelSoapClient(GlobalExceptionResolver exceptionResolver, WebServiceTemplate template) {
+    public ChoiceHotelSoapClient(GlobalExceptionResolver exceptionResolver, WebServiceTemplate template, Environment environment) {
         this.exceptionResolver = exceptionResolver;
         this.template = template;
+        this.environment = environment;
     }
 
     public CreateHotelResponse createHotel(CreateHotelRequest createHotelRequest){
