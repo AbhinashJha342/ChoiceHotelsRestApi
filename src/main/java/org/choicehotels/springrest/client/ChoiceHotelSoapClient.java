@@ -13,19 +13,16 @@ import org.springframework.ws.soap.client.SoapFaultClientException;
 @Service
 public class ChoiceHotelSoapClient {
 
-    private final Jaxb2Marshaller marshaller;
-
-    private WebServiceTemplate template;
+    private final WebServiceTemplate template;
 
     private final GlobalExceptionResolver exceptionResolver;
 
     @Autowired
     private Environment environment;
 
-    public ChoiceHotelSoapClient(Jaxb2Marshaller marshaller, GlobalExceptionResolver exceptionResolver) {
-        this.marshaller = marshaller;
-        template = new WebServiceTemplate(marshaller);
+    public ChoiceHotelSoapClient(GlobalExceptionResolver exceptionResolver, WebServiceTemplate template) {
         this.exceptionResolver = exceptionResolver;
+        this.template = template;
     }
 
     public CreateHotelResponse createHotel(CreateHotelRequest createHotelRequest){
