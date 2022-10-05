@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import org.springframework.ws.client.WebServiceIOException;
 
 import java.util.Collections;
 import java.util.stream.Collectors;
@@ -18,8 +19,9 @@ public class RestResponseExceptionHandler extends ResponseEntityExceptionHandler
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        System.out.println("inside argument not valid"+ ex.getLocalizedMessage());
         ErrorData error = new ErrorData(HttpStatus.BAD_REQUEST);
-        error.setMessage(Collections.singletonMap("errors", ex.getAllErrors().stream().map(ObjectError::toString).collect(Collectors.toList())).toString());
+        error.setMessage(Collections.singletonMap("errors", ex.getLocalizedMessage()).toString());
         return new ResponseEntity<>(error, error.getStatus());
     }
 
@@ -30,5 +32,11 @@ public class RestResponseExceptionHandler extends ResponseEntityExceptionHandler
         return new ResponseEntity<>(error, error.getStatus());
     }
 
+    @ExceptionHandler(WebServiceIOException.class)
+    public ResponseEntity<Object> handleWebServiceException(WebServiceIOException ex){
+        ErrorData error = new ErrorData(HttpStatus.SERVICE_UNAVAILABLE);
+        error.setMessage(ex.getMessage());
+        return new ResponseEntity<>(error, error.getStatus());
+    }
 
 }

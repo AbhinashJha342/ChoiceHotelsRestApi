@@ -1,5 +1,7 @@
 package org.choicehotels.springrest.model;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
@@ -8,12 +10,14 @@ public class CreateHotelRequestDto {
 
     @NotNull(message = "Please provide a name for the hotel.")
     @NotEmpty(message = "Please provide a name for the hotel.")
-    protected String name;
+    private String name;
 
-    protected String rating;
+    @Min(0)
+    @Max(5)
+    private Integer rating;
 
     @NotNull(message = "Please provide address of the hotel.")
-    protected AddressRequestDto address;
+    private AddressRequestDto address;
 
     public CreateHotelRequestDto() {
     }
@@ -26,11 +30,11 @@ public class CreateHotelRequestDto {
         this.name = name;
     }
 
-    public String getRating() {
+    public int getRating() {
         return rating;
     }
 
-    public void setRating(String rating) {
+    public void setRating(int rating) {
         this.rating = rating;
     }
 

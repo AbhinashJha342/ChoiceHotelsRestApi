@@ -11,7 +11,7 @@ public class CreateHotelRequestMapperImpl implements Mapper<CreateHotelRequestDt
     public CreateHotelRequest map(CreateHotelRequestDto source) {
         CreateHotelRequest createHotelRequest = new CreateHotelRequest();
         createHotelRequest.setName(source.getName());
-        createHotelRequest.setRating(source.getRating());
+        createHotelRequest.setRating(String.valueOf(source.getRating()));
         createHotelRequest.setAddress(new AddressDtoMapperImpl().map(source.getAddress()));
         return createHotelRequest;
     }

@@ -40,7 +40,7 @@ public class HotelControllerIntegrationTest {
     public void createHotel() throws Exception {
         CreateHotelRequestDto createHotelRequestDto = new CreateHotelRequestDto();
         createHotelRequestDto.setName("Choice");
-        createHotelRequestDto.setRating("4");
+        //createHotelRequestDto.setRating("4");
         MediaType MEDIA_TYPE_JSON_UTF8 = new MediaType("application", "json", java.nio.charset.Charset.forName("UTF-8"));
         this.mockMvc.perform(post("/hotels")
                         .accept(MediaType.APPLICATION_JSON)

@@ -31,7 +31,7 @@ public class HotelControllerUnitTest {
         String uuid = UUID.randomUUID().toString();
         CreateHotelRequestDto createHotelRequestDto = new CreateHotelRequestDto();
         createHotelRequestDto.setName("Choice");
-        createHotelRequestDto.setRating("4");
+        //createHotelRequestDto.setRating("4");
 
         CreateHotelResponseDto createHotelResponseDto = CreateHotelResponseDto.builder().setHotelId(uuid).build();
 

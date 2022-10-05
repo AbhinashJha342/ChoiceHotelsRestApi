@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Service;
+import org.springframework.ws.client.WebServiceIOException;
 import org.springframework.ws.client.core.WebServiceTemplate;
 import org.springframework.ws.soap.client.SoapFaultClientException;
 
@@ -74,6 +75,8 @@ public class ChoiceHotelSoapClient {
            return template.marshalSendAndReceive(environment.getProperty("soap.wsdl.path"), object);
        } catch(SoapFaultClientException ex){
            throw exceptionResolver.parseSoapException(ex);
+       } catch(WebServiceIOException ex){
+           throw ex;
        }
     }
 }
